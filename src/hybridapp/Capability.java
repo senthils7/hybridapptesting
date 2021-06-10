@@ -28,7 +28,7 @@ public class Capability {
 		cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2);
 		cap.setCapability(AndroidMobileCapabilityType.CHROMEDRIVER_EXECUTABLE, "/Users/senthils/Downloads/AppiumRequirement/chromedriver");
 
-		
+		cap.setCapability(AndroidMobileCapabilityType.UNHANDLED_PROMPT_BEHAVIOUR, false);
 		//for iOS
 		cap.setCapability(MobileCapabilityType.APP, fs.getAbsolutePath());
 		

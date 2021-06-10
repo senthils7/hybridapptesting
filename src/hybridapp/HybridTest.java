@@ -1,15 +1,25 @@
 package hybridapp;
 
+import static io.appium.java_client.touch.LongPressOptions.longPressOptions;
+import static io.appium.java_client.touch.offset.ElementOption.element;
+import static java.time.Duration.ofSeconds;
+
 import java.net.MalformedURLException;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import hybridapp.Capability;
 
 public class HybridTest extends Capability {
@@ -59,7 +69,7 @@ public class HybridTest extends Capability {
 	}
 	
 	//
-	@Test(enabled=true)
+	@Test(enabled=false)
 	public void testcase3() throws InterruptedException {
 		System.out.println("New app is working in the emulator");
 		driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("Veronika");
@@ -112,6 +122,65 @@ public class HybridTest extends Capability {
 		
 		Assert.assertEquals(finalamount1, total);
 
+	}
+	
+	@Test(enabled=true)
+	public void testcase4() throws InterruptedException {
+		System.out.println("New app is working in the emulator");
+		driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("Veronika");
+		driver.findElement(By.xpath("//*[@text='Female']")).click();
+		driver.findElement(By.id("android:id/text1")).click();
+		
+		//scroll to select country
+
+		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Angola\"));").click();
+		
+		driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
+
+		//scrolling till a particular product
+		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"com.androidsample.generalstore:id/rvProductList\")).scrollIntoView(textMatches(\"Converse All Star\"))");
+        //after scrolling and finding my product, i want to check how many product are visible in the screen
+		int count = driver.findElements(By.id("com.androidsample.generalstore:id/productName")).size();
+		System.out.println(count);
+		for (int i=0;i<count;i++)
+		{
+			String Name = driver.findElements(By.id("com.androidsample.generalstore:id/productName")).get(i).getText();
+			if(Name.equals("Converse All Star"))
+			{
+				driver.findElements(By.id("com.androidsample.generalstore:id/productAddCart")).get(i).click();
+				break;
+			}
+		}
+		
+		//click on view cart
+		driver.findElement(By.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();
+		
+		driver.findElement(By.xpath("//*[@text='Send me e-mails on discounts related to selected products in future']")).click();
+		
+		  TouchAction t = new TouchAction(driver);
+		  WebElement TC = driver.findElement(By.xpath("//*[@text='Please read our terms of conditions']"));
+		  t.longPress(longPressOptions().withElement(element(TC)).withDuration(ofSeconds(3))).release().perform();
+		  
+		  driver.findElement(By.id("android:id/button1")).click();
+		  
+		  driver.findElement(By.xpath("//*[@text='Visit to the website to complete purchase']")).click();
+
+		  Thread.sleep(9000);
+		  
+		  //what is the context the web app is in
+		  Set<String> contextNames = driver.getContextHandles();
+		  for (String contextName : contextNames) {
+		      System.out.println(contextName); //prints out something like NATIVE_APP \n WEBVIEW_1
+		  }
+		  
+		  driver.context("WEBVIEW_com.androidsample.generalstore");
+		  driver.findElement(By.xpath("//*[@name='q']")).sendKeys("IBM");
+			//what this line will do
+			driver.findElement(By.xpath("//*[@name='q']")).sendKeys(Keys.ENTER);
+			
+		driver.pressKey(new KeyEvent(AndroidKey.BACK));
+		driver.context("NATIVE_APP");
+	
 	}
 	
 	

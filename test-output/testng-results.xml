@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="2" total="3" passed="1" failed="0" skipped="0">
+<testng-results ignored="3" total="4" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-06-10T03:38:54Z" name="Default suite" finished-at="2021-06-10T03:39:18Z" duration-ms="23674">
+  <suite started-at="2021-06-10T05:08:00Z" name="Default suite" finished-at="2021-06-10T05:08:37Z" duration-ms="37362">
     <groups>
     </groups>
-    <test started-at="2021-06-10T03:38:54Z" name="Default test" finished-at="2021-06-10T03:39:18Z" duration-ms="23674">
+    <test started-at="2021-06-10T05:08:00Z" name="Default test" finished-at="2021-06-10T05:08:37Z" duration-ms="37362">
       <class name="hybridapp.HybridTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:hybridapp.HybridTest@4f6f416f]" started-at="2021-06-10T03:38:54Z" name="setup" finished-at="2021-06-10T03:39:03Z" duration-ms="8660" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:hybridapp.HybridTest@3b8f0a79]" started-at="2021-06-10T05:08:00Z" name="setup" finished-at="2021-06-10T05:08:06Z" duration-ms="6011" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testcase3()[pri:0, instance:hybridapp.HybridTest@4f6f416f]" started-at="2021-06-10T03:39:03Z" name="testcase3" finished-at="2021-06-10T03:39:18Z" duration-ms="14999" status="PASS">
+        <test-method signature="testcase4()[pri:0, instance:hybridapp.HybridTest@3b8f0a79]" started-at="2021-06-10T05:08:06Z" name="testcase4" finished-at="2021-06-10T05:08:37Z" duration-ms="31340" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testcase3 -->
+        </test-method> <!-- testcase4 -->
       </class> <!-- hybridapp.HybridTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

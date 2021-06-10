@@ -5,7 +5,7 @@
     <classes>
       <class name="hybridapp.HybridTest">
         <methods>
-          <include name="testcase3"/>
+          <include name="testcase4"/>
           <include name="setup"/>
         </methods>
       </class> <!-- hybridapp.HybridTest -->
